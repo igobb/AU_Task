@@ -1,0 +1,24 @@
+.error-page__container {
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+  height: calc(100vh - 150px);
+  justify-content: center;
+  align-items: center;
+
+  a {
+    font-size: 3rem;
+    margin-top: 3rem;
+    padding: 1rem 2rem;
+    border-radius: 5px;
+    text-decoration: none;
+    color: var(--veryImportant);
+    background-color: var(--veryImportantHover);
+    transition: all 0.5s ease;
+
+    &:hover {
+      transition: all 0.5s ease;
+      transform: scale(1.1);
+    }
+  }
+}
