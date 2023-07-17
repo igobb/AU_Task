@@ -1,0 +1,25 @@
+.add-form {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  max-width: 300px;
+  margin: 0 auto;
+
+  button {
+    padding: 1rem;
+    margin: 0 auto;
+    border: none;
+    border-radius: 5px;
+    width: 180px;
+    color: var(--lightBlack);
+    background-color: var(--secondary);
+    font-size: 1.2rem;
+    font-weight: 600;
+    transition: all 0.5s ease;
+
+    &:hover {
+      transition: all 0.5s ease;
+      transform: scale(1.1);
+    }
+  }
+}

@@ -2,4 +2,32 @@
   width: 80%;
   height: 100%;
   margin: 1em auto;
+
+  .top__wrapper {
+    display: flex;
+    width: 100%;
+    margin-bottom: 2rem;
+
+    .left-side__wrapper {
+      display: flex;
+      flex-direction: column;
+      width: 50%;
+
+      .balance__wrapper {
+        width: 100%;
+      }
+
+      .filter__wrapper {
+        width: 100%;
+      }
+    }
+
+    .right-side__wrapper {
+      width: 50%;
+
+      .add-form__wrapper {
+        width: 100%;
+      }
+    }
+  }
 }

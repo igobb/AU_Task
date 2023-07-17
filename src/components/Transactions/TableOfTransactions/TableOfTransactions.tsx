@@ -13,15 +13,13 @@ import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import { TablePaginationActions } from "../Pagination/Pagination";
 import { TableHead } from "@mui/material";
-import Filter from "../Filter/Filter";
 import styles from "./TableOfTransactions.module.scss";
 
-const SingleTransaction = () => {
+const TableOfTransactions = ({ searchValue }: { searchValue: string }) => {
   const [transactions, setTransactions] = useState<Transaction[] | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [page, setPage] = React.useState(0);
-  const [rowsPerPage, setRowsPerPage] = React.useState(5);
-  const [searchValue, setSearchValue] = useState("");
+  const [rowsPerPage, setRowsPerPage] = React.useState(20);
 
   useEffect(() => {
     getAllTransactions().then((data) => {
@@ -67,7 +65,6 @@ const SingleTransaction = () => {
   }
   return (
     <div className={styles["table__wrapper"]}>
-      <Filter callback={(searchValue) => setSearchValue(searchValue)} />
       <TableContainer component={Paper}>
         <Table stickyHeader sx={{ minWidth: 500 }}>
           <TableHead>
@@ -112,7 +109,7 @@ const SingleTransaction = () => {
           <TableFooter>
             <TableRow>
               <TablePagination
-                rowsPerPageOptions={[5, 10, 25, { label: "All", value: -1 }]}
+                rowsPerPageOptions={[5, 10, 20, { label: "All", value: -1 }]}
                 colSpan={3}
                 count={transactions.length}
                 rowsPerPage={rowsPerPage}
@@ -135,4 +132,4 @@ const SingleTransaction = () => {
   );
 };
 
-export default SingleTransaction;
+export default TableOfTransactions;

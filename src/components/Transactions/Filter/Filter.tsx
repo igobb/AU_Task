@@ -1,10 +1,10 @@
 import { useState } from "react";
 import styles from "./Filter.module.scss";
 
-const Filter = ({ callback }) => {
+const Filter = ({ callback }: { callback: any }) => {
   const [innerValue, setInnerValue] = useState("");
-  console.log(innerValue);
-  const handleSubmit = (e: event) => {
+
+  const handleSubmit = (e: any) => {
     e.preventDefault();
     callback(innerValue);
   };
