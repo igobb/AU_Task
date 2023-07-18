@@ -3,15 +3,35 @@
   height: 100%;
   margin: 1em auto;
 
+  @media screen and (max-width: 1024px) {
+    width: 98%;
+  }
+
   .top__wrapper {
     display: flex;
     width: 100%;
     margin-bottom: 2rem;
 
+    @media screen and (max-width: 1024px) {
+      flex-direction: column-reverse;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 20px;
+    }
+
     .left-side__wrapper {
       display: flex;
       flex-direction: column;
+      justify-content: space-between;
       width: 50%;
+
+      @media screen and (max-width: 1024px) {
+        gap: 30px;
+      }
+
+      @media screen and (max-width: 768px) {
+        width: 100%;
+      }
 
       .balance__wrapper {
         width: 100%;
@@ -24,6 +44,10 @@
 
     .right-side__wrapper {
       width: 50%;
+
+      @media screen and (max-width: 768px) {
+        width: 100%;
+      }
 
       .add-form__wrapper {
         width: 100%;

@@ -1,11 +1,13 @@
 .header__container {
   display: flex;
-  gap: 10em;
-  justify-content: space-between;
-  align-items: center;
   width: 100vw;
   height: 150px;
-  padding: 1em 4em;
+  padding: 1rem 4rem;
   background-color: var(--secondary);
   box-shadow: 0 5px 50px 3px var(--lightBlack);
+
+  @media screen and (max-width: 1024px) {
+    height: 100px;
+    padding: 0.5rem 2rem;
+  }
 }

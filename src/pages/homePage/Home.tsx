@@ -3,6 +3,7 @@ import TableOfTransactions from "../../components/Transactions/TableOfTransactio
 import styles from "./Home.module.scss";
 import Filter from "../../components/Transactions/Filter/Filter";
 import AddTransactionForm from "../../components/AddTransactionForm/AddTransactionForm";
+import DeleteTransactionForm from "../../components/DeleteTransactionForm/DeleteTransactionForm";
 
 const Home = () => {
   const [searchValue, setSearchValue] = useState("");
@@ -11,7 +12,9 @@ const Home = () => {
     <div className={styles["homepage__wrapper"]}>
       <div className={styles["top__wrapper"]}>
         <div className={styles["left-side__wrapper"]}>
-          <div className={styles["balance__wrapper"]}>Balance delete?</div>
+          <div className={styles["balance__wrapper"]}>
+            <DeleteTransactionForm />
+          </div>
           <div className={styles["filter__wrapper"]}>
             <Filter
               callback={(searchValue: string) => setSearchValue(searchValue)}

@@ -1,4 +1,4 @@
-.add-form {
+.delete-form {
   display: flex;
   flex-direction: column;
   width: 50%;
@@ -14,7 +14,7 @@
     margin: 0 auto;
     border: none;
     border-radius: 5px;
-    width: 180px;
+    width: 200px;
     color: var(--lightBlack);
     background-color: var(--secondary);
     font-size: 1.2rem;

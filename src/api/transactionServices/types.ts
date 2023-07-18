@@ -9,11 +9,13 @@ export interface Transaction {
 }
 
 export interface AddTransaction {
-  id: string;
   amount: number;
-  beneficiary: string;
   account: number;
   address: string;
   date: string;
   description: string;
+}
+
+export interface DeleteTransaction {
+  id: number;
 }

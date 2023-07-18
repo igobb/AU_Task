@@ -23,7 +23,6 @@ const TableOfTransactions = ({ searchValue }: { searchValue: string }) => {
 
   useEffect(() => {
     getAllTransactions().then((data) => {
-      console.log(data);
       setTransactions(data);
     });
     setIsLoading(false);
@@ -65,69 +64,75 @@ const TableOfTransactions = ({ searchValue }: { searchValue: string }) => {
   }
   return (
     <div className={styles["table__wrapper"]}>
-      <TableContainer component={Paper}>
-        <Table stickyHeader sx={{ minWidth: 500 }}>
-          <TableHead>
-            <TableRow>
-              {columns.map((column, index) => (
-                <TableCell key={index}>{column}</TableCell>
-              ))}
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {(rowsPerPage > 0
-              ? transactions.slice(
-                  page * rowsPerPage,
-                  page * rowsPerPage + rowsPerPage
-                )
-              : transactions
-            )
-              .filter((transaction) =>
-                transaction.beneficiary
-                  .toLowerCase()
-                  .includes(searchValue.toLowerCase())
-              )
-              .map((transaction) => (
-                <TableRow key={transaction.id}>
-                  <TableCell component="th" scope="row">
-                    {transaction.account}
-                  </TableCell>
-                  <TableCell align="right">{transaction.address}</TableCell>
-                  <TableCell align="right">{transaction.amount}</TableCell>
-                  <TableCell align="right">{transaction.beneficiary}</TableCell>
-                  <TableCell align="right">{transaction.date}</TableCell>
-                  <TableCell align="right">{transaction.description}</TableCell>
-                  <TableCell align="right">{transaction.id}</TableCell>
-                </TableRow>
-              ))}
-            {emptyRows > 0 && (
-              <TableRow style={{ height: 53 * emptyRows }}>
-                <TableCell colSpan={6} />
+      <Paper sx={{ width: "100%", overflow: "hidden" }}>
+        <TableContainer sx={{ maxHeight: 395 }}>
+          <Table stickyHeader sx={{ minWidth: 420 }}>
+            <TableHead>
+              <TableRow>
+                {columns.map((column, index) => (
+                  <TableCell key={index}>{column}</TableCell>
+                ))}
               </TableRow>
-            )}
-          </TableBody>
-          <TableFooter>
-            <TableRow>
-              <TablePagination
-                rowsPerPageOptions={[5, 10, 20, { label: "All", value: -1 }]}
-                colSpan={3}
-                count={transactions.length}
-                rowsPerPage={rowsPerPage}
-                page={page}
-                SelectProps={{
-                  inputProps: {
-                    "aria-label": "rows per page",
-                  },
-                  native: true,
-                }}
-                onPageChange={handleChangePage}
-                onRowsPerPageChange={handleChangeRowsPerPage}
-                ActionsComponent={TablePaginationActions}
-              />
-            </TableRow>
-          </TableFooter>
-        </Table>
-      </TableContainer>
+            </TableHead>
+            <TableBody>
+              {(rowsPerPage > 0
+                ? transactions.slice(
+                    page * rowsPerPage,
+                    page * rowsPerPage + rowsPerPage
+                  )
+                : transactions
+              )
+                .filter((transaction) =>
+                  transaction.beneficiary
+                    .toLowerCase()
+                    .includes(searchValue.toLowerCase())
+                )
+                .map((transaction) => (
+                  <TableRow key={transaction.id}>
+                    <TableCell component="th" scope="row">
+                      {transaction.account}
+                    </TableCell>
+                    <TableCell align="right">{transaction.address}</TableCell>
+                    <TableCell align="right">{transaction.amount}</TableCell>
+                    <TableCell align="right">
+                      {transaction.beneficiary}
+                    </TableCell>
+                    <TableCell align="right">{transaction.date}</TableCell>
+                    <TableCell align="right">
+                      {transaction.description}
+                    </TableCell>
+                    <TableCell align="right">{transaction.id}</TableCell>
+                  </TableRow>
+                ))}
+              {emptyRows > 0 && (
+                <TableRow style={{ height: 53 * emptyRows }}>
+                  <TableCell colSpan={6} />
+                </TableRow>
+              )}
+            </TableBody>
+            <TableFooter>
+              <TableRow>
+                <TablePagination
+                  rowsPerPageOptions={[5, 10, 20, { label: "All", value: -1 }]}
+                  colSpan={3}
+                  count={transactions.length}
+                  rowsPerPage={rowsPerPage}
+                  page={page}
+                  SelectProps={{
+                    inputProps: {
+                      "aria-label": "rows per page",
+                    },
+                    native: true,
+                  }}
+                  onPageChange={handleChangePage}
+                  onRowsPerPageChange={handleChangeRowsPerPage}
+                  ActionsComponent={TablePaginationActions}
+                />
+              </TableRow>
+            </TableFooter>
+          </Table>
+        </TableContainer>
+      </Paper>
     </div>
   );
 };

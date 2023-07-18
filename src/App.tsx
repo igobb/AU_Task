@@ -7,6 +7,7 @@ import Routes from "./routes/Routes";
 import Loading from "./components/Loading/Loading";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Footer from "./components/Footer/Footer";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Suspense fallback={<Loading />}>
           <Routes />
         </Suspense>
+        <Footer />
         <ToastContainer
           position="top-center"
           autoClose={3000}

@@ -1,9 +1,8 @@
 import { useFormik } from "formik";
 import { AddTransaction } from "../../api/transactionServices/types";
 import { addTransaction } from "../../api/transactionServices/addTransaction";
-import { v4 as uuid } from "uuid";
 import { addTransactionSchema } from "../../api/transactionServices/validation";
-import Input from "./Input/Input";
+import Input from "../Input/Input";
 import styles from "./AddTransactionForm.module.scss";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
@@ -15,8 +14,6 @@ const AddTransactionForm = () => {
   let currentMonth = String(date.getMonth() + 1).padStart(2, "0");
   let currentYear = date.getFullYear();
   let currentDate = `${currentDay}-${currentMonth}-${currentYear}`;
-
-  const id: string = uuid();
 
   const navigate = useNavigate();
 
@@ -31,11 +28,9 @@ const AddTransactionForm = () => {
     initialValues: {
       account: 0,
       address: "",
-      amount: 0,
-      beneficiary: "",
+      amount: 1000,
       date: currentDate,
       description: "",
-      id: id,
     },
     onSubmit: (values: AddTransaction) => {
       addTransaction(values);
